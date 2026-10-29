@@ -2,7 +2,7 @@
 # Owners need Write access to the repo or the rule is ignored.
 /app/       
 /scripts/
-/infra/
+/infra/    @brightantie @philwem
 /.github/  @brightantie
 /tests/    @brightantie
 /docs/
