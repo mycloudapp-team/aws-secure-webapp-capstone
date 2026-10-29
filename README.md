@@ -2,7 +2,7 @@
 
 MyCloudApp: a secure web application on AWS served through CLoudFront -> Application Load Balancer -> EC2, deployed with GitHub Actions.
 
-> Status: Phase 1 (setyp). Nothing is deployed yet.
+> Status: Phase 1 (setup). Nothing is deployed yet.
 
 ## Architecture
 _To be added ( Mermaid diagram in docs/architecture.md)._
