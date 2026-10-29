@@ -1,0 +1,8 @@
+# Each path automatically requests review from the listed Github users.
+# Owners need Write access to the repo or the rule is ignored.
+/app/       
+/scripts/
+/infra/
+/.github/  @brightantie
+/tests/    @brightantie
+/docs/
