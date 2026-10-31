@@ -1,3 +1,3 @@
 # decisions-log
-
-_Placeholder. Owner to complete._
+added Philipa to the capstone-infra group and Michael to capstone-monitoring group.
+_Bright._
