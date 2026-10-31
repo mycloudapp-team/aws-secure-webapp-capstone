@@ -24,3 +24,6 @@ _To be added ( Mermaid diagram in docs/architecture.md)._
 
 ## Sections to complete later
 Prerequistes, setups, deployments, CI/CD, security controls, monitoring, cost management, troubleshooting, cleanup, screenshots, live URL.
+
+## License
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) files.
