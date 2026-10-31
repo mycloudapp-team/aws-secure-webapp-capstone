@@ -1,4 +1,4 @@
-#Screenshots
+# Screenshots
 
 Evidence of what we built, organised by phase. 
 
@@ -6,7 +6,7 @@ Evidence of what we built, organised by phase.
 `card<NN>-<what-it-shows>-<YYYYMMDD>.pmg`
 EXample: `screenshots/phase-1/card02-root-mfa-enabled-20261030.png`
 
-##Before you upload (this repo is PUBLIC)
+## Before you upload (this repo is PUBLIC)
 Hide or crop ALL of these:
 -AWS account ID (12 digits) and the account sign-in URL
 -Email Addresses
