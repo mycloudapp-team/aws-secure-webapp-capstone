@@ -2,7 +2,7 @@
 
 MyCloudApp: a secure web application on AWS served through CLoudFront -> Application Load Balancer -> EC2, deployed with GitHub Actions.
 
-> Status: Phase 1 (setup). Nothing is deployed yet.
+> Status: Phase 2 (deployment). Nothing is deployed yet.
 
 ## Architecture
 _To be added ( Mermaid diagram in docs/architecture.md)._
@@ -18,7 +18,7 @@ _To be added ( Mermaid diagram in docs/architecture.md)._
 
 ## Contributing
 1. Branch from 'main': 'feature/<trello-card#>-<short-name>'
-2. Commit in small steps and open a pull request that links the Trello card.
+2. Commit in small steps and open a pull request.
 3. Wait for review. Never push directly to 'main'.
 4. Never commit secrets, keys or tokems.
 
