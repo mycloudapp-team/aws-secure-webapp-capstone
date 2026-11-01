@@ -28,7 +28,7 @@ This phase covers the foundational infrastructure, network setup, version contro
 
 ### 1. Architecture & Networking
 * **VPC:** `mycloudapp-vpc` configured with public and private subnets.
-* **Internet Gateway:** Attached (`MyCloudApp-igw`) to enable routing to the public internet.
+* **Internet Gateway:** Attached (`mycloudapp-igw`) to enable routing to the public internet.
 
 ### 2. Security Group Configuration
 To maintain strict least-privilege security principles, traffic flow is tightly controlled across tiers:
@@ -39,7 +39,7 @@ To maintain strict least-privilege security principles, traffic flow is tightly 
   * **HTTP (Port 80):** Restricted strictly to source `mycloudapp-sg`. No direct public or SSH access from the internet.
 
 ### 3. Version Control & Tracking
-* **GitHub:** Main repository initialized with a structured branching strategy (`main`, `develop`, feature branches).
+* **GitHub:** Main repository initialized with a structured branching strategy (`main`, `BrightAntie-patch-3`).
 * **Trello:** Project management board configured with lists for *Backlog*, *In Progress*, *Review*, and *Done*.
 
 
