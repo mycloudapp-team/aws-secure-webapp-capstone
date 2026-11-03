@@ -1,0 +1,29 @@
+.site-footer {
+  padding: 45px 6% 25px;
+  background: #fffaf7;
+  border-top: 1px solid #f2e8e1;
+  text-align: center;
+}
+
+.footer-logo {
+  font-size: 27px;
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+
+.footer-logo span {
+  color: #ff5a0a;
+}
+
+.site-footer > p {
+  margin: 10px 0 25px;
+  color: #555d6b;
+  font-size: 14px;
+}
+
+.footer-bottom {
+  padding-top: 20px;
+  border-top: 1px solid #f2e8e1;
+  color: #777777;
+  font-size: 13px;
+}
