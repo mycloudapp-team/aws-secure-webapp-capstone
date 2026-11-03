@@ -11,7 +11,7 @@ _To be added ( Mermaid diagram in docs/architecture.md)._
 | Name | Role |
 |----|---|
 | Philipa | Project Manager |
-| Michael | Frontend Egineer |
+| Michael | Frontend Engineer |
 | Philip | Cloud Insfrastructure Engineer |
 | Bright | DevOps / CI/CD Engineer, AWS Account Owner |
 | Sandra | Monitoring, Cost and Documentation Engineer |
