@@ -1,11 +1,12 @@
-# aws-secure-webapp-capstone
+# MyCloudApp
 
-MyCloudApp: a secure web application on AWS served through CLoudFront -> Application Load Balancer -> EC2, deployed with GitHub Actions.
+A secure web application hosted on AWS. The planned request path is CloudFront -> Application Load Balancer -> EC2.
 
 > Status: Phase 2 (deployment). Nothing is deployed yet.
 
 ## Architecture
-_To be added ( Mermaid diagram in docs/architecture.md)._
+
+The architecture diagram will be added to [`docs/architecture.md`](docs/architecture.md).
 
 ## Team
 | Name | Role |
@@ -48,4 +49,5 @@ To maintain strict least-privilege security principles, traffic flow is tightly 
 Prerequistes, setups, deployments, CI/CD, security controls, monitoring, cost management, troubleshooting, cleanup, screenshots, live URL.
 
 ## License
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) files.
+
+This project is licensed under the MIT License. See [LICENSE](LICENSE).
