@@ -1,7 +1,62 @@
 
+import { useState } from "react";
 import "./Contact.css";
 
 function Contact() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const [submitted, setSubmitted] = useState(false);
+
+  function handleChange(event) {
+    event.target.setCustomValidity("");
+
+    const { name, value } = event.target;
+
+    setFormData((currentData) => ({
+      ...currentData,
+      [name]: value,
+    }));
+
+    setSubmitted(false);
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+
+    const form = event.currentTarget;
+    const nameInput = form.elements.name;
+    const emailInput = form.elements.email;
+    const messageInput = form.elements.message;
+
+    nameInput.setCustomValidity(
+      nameInput.value.trim() ? "" : "Please enter your name."
+    );
+
+    emailInput.setCustomValidity(
+      emailInput.value.trim() ? "" : "Please enter your email."
+    );
+
+    messageInput.setCustomValidity(
+      messageInput.value.trim() ? "" : "Please enter a message."
+    );
+
+    if (!form.reportValidity()) {
+      return;
+    }
+
+    setSubmitted(true);
+
+    setFormData({
+      name: "",
+      email: "",
+      message: "",
+    });
+  }
+
   return (
     <section className="contact-section" id="contact">
       <div className="contact-info">
@@ -21,7 +76,9 @@ function Contact() {
           <span className="contact-icon">✉</span>
           <div>
             <h4>Email us</h4>
-            <p>Get in touch with our team.</p>
+            <a href="mailto:info@alpha.com.gh">
+              info@alpha.com.gh
+            </a>
           </div>
         </div>
 
@@ -29,39 +86,65 @@ function Contact() {
           <span className="contact-icon">☎</span>
           <div>
             <h4>Call us</h4>
-            <p>We're happy to assist you.</p>
+            <a href="tel:+233545498852">
+              +233 (0) 54 549 8852
+            </a>
           </div>
         </div>
       </div>
 
-      <form className="contact-form" onSubmit={(event) => event.preventDefault()}>
+      <form className="contact-form" onSubmit={handleSubmit}>
         <h3>Send us a message</h3>
+
+        {submitted && (
+          <p className="contact-success" role="status">
+            Thank you! Your message has been received in this demo.
+          </p>
+        )}
 
         <label htmlFor="contact-name">Your name</label>
         <input
           id="contact-name"
+          name="name"
           type="text"
           placeholder="Enter your name"
+          value={formData.name}
+          onChange={handleChange}
+          autoComplete="name"
           required
         />
 
         <label htmlFor="contact-email">Email address</label>
         <input
           id="contact-email"
+          name="email"
           type="email"
           placeholder="Enter your email"
+          value={formData.email}
+          onChange={handleChange}
+          autoComplete="email"
           required
         />
 
         <label htmlFor="contact-message">Your message</label>
         <textarea
           id="contact-message"
+          name="message"
           rows="5"
           placeholder="Write your message..."
+          value={formData.message}
+          onChange={handleChange}
+          maxLength={500}
           required
         />
 
-        <button type="submit">Send message →</button>
+        <div className="message-counter">
+          {formData.message.length}/500 characters
+        </div>
+
+        <button type="submit" disabled={submitted}>
+          {submitted ? "Message received ✓" : "Send message →"}
+        </button>
       </form>
     </section>
   );

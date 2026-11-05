@@ -1,11 +1,12 @@
+
 /* =========================================
-   SAVORYSPOT HERO SECTION
+   DISHDAT HERO SECTION
    ========================================= */
 
 .hero-section {
   position: relative;
   display: grid;
-  grid-template-columns: 48% 52%;
+  grid-template-columns: minmax(0, 48%) minmax(0, 52%);
   align-items: center;
 
   width: 100%;
@@ -25,9 +26,10 @@
 
   width: 100%;
   max-width: 680px;
+  min-width: 0;
 }
 
-/* Small peach promotional label */
+/* Promotional label */
 .hero-label {
   display: inline-flex;
   align-items: center;
@@ -61,14 +63,15 @@
   font-weight: 800;
   line-height: 1.08;
   letter-spacing: -4.5px;
+
+  overflow-wrap: break-word;
 }
 
-/* Orange headline line */
 .hero-title span {
   color: var(--primary-orange);
 }
 
-/* Description below headline */
+/* Description */
 .hero-description {
   max-width: 600px;
   margin-top: 24px;
@@ -89,6 +92,7 @@
   gap: 18px;
 
   min-width: 290px;
+  max-width: 100%;
   padding: 10px 12px 10px 27px;
 
   color: #ffffff;
@@ -99,7 +103,7 @@
   font-size: 17px;
   font-weight: 600;
 
-  transition: all 0.3s ease;
+  transition: background 0.3s ease, transform 0.3s ease;
 }
 
 .hero-cta:hover {
@@ -107,10 +111,17 @@
   transform: translateY(-3px);
 }
 
+.hero-cta:focus-visible {
+  outline: 3px solid var(--text-dark);
+  outline-offset: 4px;
+}
+
 /* White circular arrow */
 .hero-cta-arrow {
   display: grid;
   place-items: center;
+
+  flex-shrink: 0;
 
   width: 42px;
   height: 42px;
@@ -132,10 +143,11 @@
   justify-content: center;
 
   width: 100%;
+  min-width: 0;
   min-height: 500px;
 }
 
-/* Orange decorative shape behind food */
+/* Orange decorative shape */
 .hero-orange-shape {
   position: absolute;
   z-index: 0;
@@ -196,7 +208,7 @@
   transform: rotate(8deg);
 }
 
-/* Main burger, fries and drink image */
+/* Main food image */
 .hero-food-image {
   position: relative;
   z-index: 1;
@@ -213,7 +225,7 @@
   box-shadow: 0 20px 42px rgba(83, 52, 33, 0.18);
 }
 
-/* White Made with love badge */
+/* Made with love badge */
 .hero-love-badge {
   position: absolute;
   z-index: 2;
@@ -291,7 +303,7 @@
   transform: rotate(28deg) scale(0.62);
 }
 
-/* Curved white transition at bottom */
+/* Curved white transition */
 .hero-bottom-wave {
   position: absolute;
   z-index: 4;
@@ -305,6 +317,8 @@
   background: #ffffff;
 
   border-radius: 50% 50% 0 0 / 65% 65% 0 0;
+
+  pointer-events: none;
 }
 
 /* =========================================
@@ -313,13 +327,15 @@
 
 @media (max-width: 1000px) {
   .hero-section {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    min-height: 540px;
+
     padding-left: 4%;
     padding-right: 4%;
   }
 
   .hero-title {
-    font-size: clamp(48px, 6vw, 65px);
+    font-size: clamp(44px, 5.5vw, 65px);
     letter-spacing: -3px;
   }
 
@@ -334,6 +350,16 @@
   .hero-description {
     font-size: 16px;
   }
+
+  .hero-label {
+    font-size: 13px;
+    padding: 11px 16px;
+  }
+
+  .hero-love-badge {
+    padding: 17px 22px;
+    font-size: 17px;
+  }
 }
 
 /* =========================================
@@ -342,46 +368,171 @@
 
 @media (max-width: 700px) {
   .hero-section {
-    grid-template-columns: 1fr;
-    gap: 20px;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
 
-    padding: 45px 6% 75px;
+    min-height: auto;
+
+    padding: 42px 6% 65px;
   }
 
   .hero-content {
     max-width: 100%;
+    text-align: left;
   }
 
   .hero-label {
+    gap: 9px;
+
+    margin-bottom: 19px;
+    padding: 10px 14px;
+
     font-size: 11px;
-    padding: 11px 15px;
+  }
+
+  .hero-label-icon {
+    font-size: 17px;
   }
 
   .hero-title {
-    font-size: clamp(48px, 12vw, 65px);
+    font-size: clamp(43px, 11vw, 65px);
+    line-height: 1.08;
     letter-spacing: -2.5px;
   }
 
   .hero-description {
+    max-width: 100%;
+
+    margin-top: 18px;
+    margin-bottom: 24px;
+
     font-size: 15px;
+    line-height: 1.6;
+  }
+
+  .hero-cta {
+    min-width: 250px;
+    padding: 8px 10px 8px 21px;
+    font-size: 15px;
+  }
+
+  .hero-cta-arrow {
+    width: 38px;
+    height: 38px;
+    font-size: 24px;
   }
 
   .hero-visual {
+    width: 100%;
     min-height: 320px;
+    margin-top: 5px;
   }
 
   .hero-food-image {
-    width: min(100%, 320px);
+    width: min(82%, 320px);
+    border-width: 8px;
+  }
+
+  .hero-orange-shape {
+    top: 8%;
+    right: -3%;
+    width: 90%;
+    height: 80%;
+  }
+
+  .hero-peach-shape {
+    left: 10%;
+    width: 75%;
+    height: 88%;
   }
 
   .hero-love-badge {
-    top: 5%;
-    right: 0;
-    padding: 15px 20px;
-    font-size: 15px;
+    top: 4%;
+    right: 1%;
+
+    padding: 13px 17px;
+    font-size: 14px;
+  }
+
+  .love-heart {
+    font-size: 20px;
+  }
+
+  .hero-decoration {
+    transform-origin: center;
+  }
+
+  .decoration-one {
+    top: 12%;
+    left: 3%;
+  }
+
+  .decoration-two {
+    top: 25%;
+    left: 1%;
+  }
+
+  .decoration-three {
+    right: 2%;
+    bottom: 20%;
+  }
+
+  .decoration-four {
+    right: 10%;
+    bottom: 8%;
   }
 
   .hero-bottom-wave {
     height: 35px;
+  }
+}
+
+/* =========================================
+   SMALL MOBILE PHONES
+   ========================================= */
+
+@media (max-width: 380px) {
+  .hero-section {
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+
+  .hero-title {
+    font-size: 42px;
+    letter-spacing: -2px;
+  }
+
+  .hero-description {
+    font-size: 14px;
+  }
+
+  .hero-cta {
+    min-width: 0;
+    width: 100%;
+    max-width: 280px;
+  }
+
+  .hero-visual {
+    min-height: 280px;
+  }
+
+  .hero-food-image {
+    width: min(85%, 270px);
+  }
+
+  .hero-love-badge {
+    padding: 10px 13px;
+    font-size: 12px;
+  }
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .hero-cta {
+    transition: none;
+  }
+
+  .hero-cta:hover {
+    transform: none;
   }
 }
