@@ -21,7 +21,7 @@ The architecture diagram will be added to [`docs/architecture.md`](docs/architec
 1. Branch from 'main': 'feature/<trello-card#>-<short-name>'
 2. Commit in small steps and open a pull request.
 3. Wait for review. Never push directly to 'main'.
-4. Never commit secrets, keys or tokems.
+4. Never commit secrets, keys or tokems..
 
 ## Phase 1
 ## Project Setup & Environment Configuration
