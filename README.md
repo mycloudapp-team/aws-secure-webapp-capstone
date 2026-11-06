@@ -1,77 +1,81 @@
 # MyCloudApp
 
-A secure web application hosted on AWS. The planned request path is CloudFront -> Application Load Balancer -> EC2.
+MyCloudApp is a React web application hosted on AWS. Requests are served through
+CloudFront, an Application Load Balancer (ALB), and an EC2 instance running Nginx.
 
-> **Status:** Phases 1 and 2 are complete. Phase 3 (Application Load Balancer) is next.
+> **Project status (5 November 2026):** The application is deployed and accessible
+> through CloudFront, and the automated deployment pipeline is working. Security
+> hardening, monitoring, cost controls, final testing, and documentation remain.
 
-## Project phases
+## Architecture and completed work
 
-### Phase 1 — AWS network infrastructure
+- **Networking:** `MyCloudApp-vpc` (`10.0.0.0/16`), two public and two private
+  subnets, Internet Gateway, route tables, and NAT Gateway.
+- **Compute and web serving:** EC2 application server running Nginx, managed
+  through Systems Manager (SSM).
+- **Load balancing and delivery:** ALB and target group, with CloudFront providing
+  HTTPS access to the website.
+- **Deployment:** GitHub Actions uses OIDC to authenticate to AWS, uploads build
+  artifacts to a private S3 bucket, deploys through SSM, reloads Nginx, and
+  invalidates CloudFront content.
+- **Application:** The React production build has been deployed and the website
+  has been confirmed working.
 
-**Completed**
+### Current traffic encryption
 
-VPC, public and private subnets, Internet Gateway, route tables, and network configuration.
+Browser-to-CloudFront traffic uses HTTPS. At the time of this assessment,
+CloudFront-to-ALB and ALB-to-EC2 traffic use HTTP; EC2 HTTP ingress is restricted
+to the ALB security group. Review and harden origin encryption as part of the
+remaining security work.
 
-### Phase 2 — EC2 and application deployment
+## Remaining work
 
-**Completed**
+### Security hardening
 
-EC2, IAM role, Systems Manager, Nginx, and successful application deployment.
+- Review security group ingress and egress rules.
+- Review IAM roles and policies for least privilege.
+- Evaluate moving EC2 to a private subnet and removing its public IP.
+- Decide and implement appropriate encryption between CloudFront, ALB, and EC2.
 
-### Phase 3 — Application Load Balancer
+### Monitoring and cost management
 
-**Next**
+- Create CloudWatch dashboards and alarms for EC2 and ALB health, traffic,
+  latency, and errors.
+- Review application and Nginx logs.
+- Review EC2, ALB, NAT Gateway, and CloudFront costs.
+- Configure an AWS Budget and billing alert; identify resources to stop or remove
+  after testing.
 
-- Create an ALB across two Availability Zones.
-- Create a target group for EC2.
-- Configure health checks.
-- Connect the ALB to EC2 securely.
+### Testing and reliability
 
-### Phase 4 — HTTPS and content delivery
+- Verify the application through CloudFront and check ALB target health.
+- Test the deployment workflow after a code change and verify rollback behavior.
+- Verify Nginx and EC2 recovery after a restart.
+- Perform basic application load testing.
 
-**Pending**
+### Documentation and acceptance
 
-- Configure AWS Certificate Manager (ACM).
-- Add an HTTPS listener to the ALB.
-- Create a CloudFront distribution.
-- Configure secure origin communication.
-
-### Phase 5 — CI/CD automation
-
-**Pending**
-
-- Connect the GitHub repository.
-- Configure a build and deployment pipeline.
-- Automate deployment to EC2.
-- Test updates through Git pushes.
-
-### Phase 6 — Monitoring, testing, and documentation
-
-**Pending**
-
-- Configure CloudWatch metrics and alarms.
-- Test the application and infrastructure.
-- Set up cost monitoring.
-- Add an architecture diagram and technical documentation.
-
-## Architecture
-
-The architecture diagram will be added to [`docs/architecture.md`](docs/architecture.md).
+- Add the architecture diagram to [`docs/architecture.md`](docs/architecture.md).
+- Document network, security group, IAM, and deployment configuration.
+- Add relevant AWS and deployment screenshots.
+- Complete team review and final acceptance testing.
 
 ## Team
+
 | Name | Role |
-|----|---|
+|---|---|
 | Philipa | Project Manager |
 | Michael | Frontend Engineer |
-| Philip | Cloud Insfrastructure Engineer |
+| Philip | Cloud Infrastructure Engineer |
 | Bright | DevOps / CI/CD Engineer, AWS Account Owner |
-| Sandra | Monitoring, Cost and Documentation Engineer |
+| Sandra | Monitoring, Cost, and Documentation Engineer |
 
 ## Contributing
-1. Branch from 'main': 'feature/<trello-card#>-<short-name>'
+
+1. Branch from `main` using `feature/<trello-card#>-<short-name>`.
 2. Commit in small steps and open a pull request.
-3. Wait for review. Never push directly to 'main'.
-4. Never commit secrets, keys or tokems..
+3. Wait for review; do not push directly to `main`.
+4. Never commit secrets, keys, or tokens.
 
 ## License
 
