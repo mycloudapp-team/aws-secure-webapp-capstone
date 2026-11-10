@@ -1,51 +1,82 @@
-# aws-secure-webapp-capstone
+# MyCloudApp
 
-MyCloudApp: a secure web application on AWS served through CLoudFront -> Application Load Balancer -> EC2, deployed with GitHub Actions.
+MyCloudApp is a React web application hosted on AWS. Requests are served through
+CloudFront, an Application Load Balancer (ALB), and an EC2 instance running Nginx.
 
-> Status: Phase 2 (deployment). Nothing is deployed yet.
+> **Project status (5 November 2026):** The application is deployed and accessible
+> through CloudFront, and the automated deployment pipeline is working. Security
+> hardening, monitoring, cost controls, final testing, and documentation remain.
 
-## Architecture
-_To be added ( Mermaid diagram in docs/architecture.md)._
+## Architecture and completed work
+
+- **Networking:** `MyCloudApp-vpc` (`10.0.0.0/16`), two public and two private
+  subnets, Internet Gateway, route tables, and NAT Gateway.
+- **Compute and web serving:** EC2 application server running Nginx, managed
+  through Systems Manager (SSM).
+- **Load balancing and delivery:** ALB and target group, with CloudFront providing
+  HTTPS access to the website.
+- **Deployment:** GitHub Actions uses OIDC to authenticate to AWS, uploads build
+  artifacts to a private S3 bucket, deploys through SSM, reloads Nginx, and
+  invalidates CloudFront content.
+- **Application:** The React production build has been deployed and the website
+  has been confirmed working.
+
+### Current traffic encryption
+
+Browser-to-CloudFront traffic uses HTTPS. At the time of this assessment,
+CloudFront-to-ALB and ALB-to-EC2 traffic use HTTP; EC2 HTTP ingress is restricted
+to the ALB security group. Review and harden origin encryption as part of the
+remaining security work.
+
+## Remaining work
+
+### Security hardening
+
+- Review security group ingress and egress rules.
+- Review IAM roles and policies for least privilege.
+- Evaluate moving EC2 to a private subnet and removing its public IP.
+- Decide and implement appropriate encryption between CloudFront, ALB, and EC2.
+
+### Monitoring and cost management
+
+- Create CloudWatch dashboards and alarms for EC2 and ALB health, traffic,
+  latency, and errors.
+- Review application and Nginx logs.
+- Review EC2, ALB, NAT Gateway, and CloudFront costs.
+- Configure an AWS Budget and billing alert; identify resources to stop or remove
+  after testing.
+
+### Testing and reliability
+
+- Verify the application through CloudFront and check ALB target health.
+- Test the deployment workflow after a code change and verify rollback behavior.
+- Verify Nginx and EC2 recovery after a restart.
+- Perform basic application load testing.
+
+### Documentation and acceptance
+
+- Add the architecture diagram to [`docs/architecture.md`](docs/architecture.md).
+- Document network, security group, IAM, and deployment configuration.
+- Add relevant AWS and deployment screenshots.
+- Complete team review and final acceptance testing.
 
 ## Team
+
 | Name | Role |
-|----|---|
+|---|---|
 | Philipa | Project Manager |
 | Michael | Frontend Engineer |
-| Philip | Cloud Insfrastructure Engineer |
+| Philip | Cloud Infrastructure Engineer |
 | Bright | DevOps / CI/CD Engineer, AWS Account Owner |
-| Sandra | Monitoring, Cost and Documentation Engineer |
+| Sandra | Monitoring, Cost, and Documentation Engineer |
 
 ## Contributing
-1. Branch from 'main': 'feature/<trello-card#>-<short-name>'
+
+1. Branch from `main` using `feature/<trello-card#>-<short-name>`.
 2. Commit in small steps and open a pull request.
-3. Wait for review. Never push directly to 'main'.
-4. Never commit secrets, keys or tokems.
-
-## Phase 1
-## Project Setup & Environment Configuration
-This phase covers the foundational infrastructure, network setup, version control, and security group configurations for the application.
-
-### 1. Architecture & Networking
-* **VPC:** `mycloudapp-vpc` configured with public and private subnets.
-* **Internet Gateway:** Attached (`mycloudapp-igw`) to enable routing to the public internet.
-
-### 2. Security Group Configuration
-To maintain strict least-privilege security principles, traffic flow is tightly controlled across tiers:
-* **`mycloudapp-sg` (Application Load Balancer Security Group):**
-  * **HTTP (Port 80):** Open to `0.0.0.0/0` (Redirects to HTTPS).
-  * **HTTPS (Port 443):** Open to `0.0.0.0/0` (Secure public entry point).
-* **`mycloudapp-sg` (EC2 Application Servers Security Group):**
-  * **HTTP (Port 80):** Restricted strictly to source `mycloudapp-sg`. No direct public or SSH access from the internet.
-
-### 3. Version Control & Tracking
-* **GitHub:** Main repository initialized with a structured branching strategy (`main`, `BrightAntie-patch-3`).
-* **Trello:** Project management board configured with lists for *Backlog*, *In Progress*, *Review*, and *Done*.
-
-
-
-## Sections to complete later
-Prerequistes, setups, deployments, CI/CD, security controls, monitoring, cost management, troubleshooting, cleanup, screenshots, live URL.
+3. Wait for review; do not push directly to `main`.
+4. Never commit secrets, keys, or tokens.
 
 ## License
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) files.
+
+This project is licensed under the MIT License. See [LICENSE](LICENSE).
