@@ -4,7 +4,7 @@ name: Deploy MyCloudApp
 on:
   push:
     branches:
-      - phil
+      - main
   workflow_dispatch:
 
 permissions:
