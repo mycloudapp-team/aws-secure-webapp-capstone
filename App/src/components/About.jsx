@@ -1,6 +1,6 @@
 
 import "./About.css";
-import aboutImage from "../assets/images/strawberry.jpg";
+import aboutImage from "../assets/images/strawberry-optimized.jpg";
 
 function About() {
   return (
@@ -28,6 +28,8 @@ function About() {
         <img
           src={aboutImage}
           alt="Fresh raspberry-topped cake, freshly prepared"
+          loading="lazy"
+          decoding="async"
         />
       </div>
     </section>
