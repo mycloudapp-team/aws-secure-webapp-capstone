@@ -66,7 +66,7 @@ Workflow: [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml)
    - runs `nginx -t` and reloads Nginx; if that fails, restores the previous site.
 6. Invalidate the CloudFront cache.
 
-**Not yet implemented:** a post-deployment smoke test of the CloudFront URL and ALB target health. A completed workflow run alone is not proof of a healthy deployment.
+** Implemented:** a post-deployment smoke test of the CloudFront URL and ALB target health. A completed workflow run alone is not proof of a healthy deployment.
 
 **Concurrency:** only one deployment runs at a time; in-progress runs are not cancelled.
 
