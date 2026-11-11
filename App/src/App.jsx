@@ -2,13 +2,18 @@ import { useRef, useState } from "react";
 // Import website components
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
+import Menu from "./components/Menu";
+import Cart from "./components/Cart";
+import Checkout from "./components/Checkout";
+import OrderSuccess from "./components/OrderSuccess";
+import About from "./components/About";
+import Contact from "./components/Contact";
+import Footer from "./components/Footer";
+
 import jollofRice from "./assets/images/jollof rice.jpg";
 import friedRice from "./assets/images/fried-rice.jpg";
 import friedChicken from "./assets/images/fried-chicken.jpg";
-import Footer from "./components/Footer";
-import About from "./components/About";
-import Contact from "./components/Contact";
-// Import main application styles
+
 import "./App.css";
 
 const menuItems = [
@@ -67,6 +72,66 @@ function App() {
 
   return (
     <div className="app">
+      {!isCheckoutOpen && (
+        <>
+          <Navbar
+            cartCount={cartCount}
+            onCartClick={() => setIsCartOpen(true)}
+          />
+
+          <main>
+            <Hero />
+
+            <section className="menu-preview" id="menu">
+              <div className="menu-intro">
+                <div className="section-kicker">
+                  <span className="kicker-line" />
+                  WHAT WE'RE SERVING
+                </div>
+
+                <h2>Find your new favourite</h2>
+                <p>
+                  Freshly made favourites, prepared with care and ready to enjoy.
+                </p>
+              </div>
+
+              <div className="menu-cards">
+                <article className="menu-card">
+                  <div className="menu-card-background jollof" />
+                  <img src={jollofRice} alt="A plate of jollof rice" />
+                </article>
+
+                <article className="menu-card">
+                  <div className="menu-card-background fried-rice" />
+                  <img src={friedRice} alt="A plate of fried rice" />
+                </article>
+
+                <article className="menu-card">
+                  <div className="menu-card-background chicken" />
+                  <img src={friedChicken} alt="Crispy fried chicken" />
+                </article>
+              </div>
+            </section>
+
+            <Menu onAddToCart={addToCart} />
+
+            <About />
+            <Contact />
+          </main>
+
+          <Footer />
+        </>
+      )}
+
+      {isCartOpen && (
+        <Cart
+          cartItems={cartItems}
+          onClose={() => setIsCartOpen(false)}
+          onUpdateQuantity={updateQuantity}
+          onRemoveItem={removeFromCart}
+          onCheckout={openCheckout}
+        />
+      )}
 
       {/* Website navigation */}
       <Navbar

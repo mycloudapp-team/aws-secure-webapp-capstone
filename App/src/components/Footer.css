@@ -1,11 +1,28 @@
+
+/* =========================================
+   DISHDAT FOOTER
+   ========================================= */
+
 .site-footer {
-  padding: 45px 6% 25px;
+  width: 100%;
+
+  padding: 50px 6% 25px;
+
   background: #fffaf7;
+
   border-top: 1px solid #f2e8e1;
+
   text-align: center;
 }
 
+/* FOOTER LOGO */
 .footer-logo {
+  display: inline-block;
+
+  margin-bottom: 5px;
+
+  color: var(--text-dark);
+
   font-size: 27px;
   font-weight: 800;
   letter-spacing: -1px;
@@ -15,15 +32,70 @@
   color: #ff5a0a;
 }
 
+/* FOOTER DESCRIPTION */
 .site-footer > p {
-  margin: 10px 0 25px;
+  max-width: 550px;
+
+  margin: 10px auto 25px;
+
   color: #555d6b;
+
   font-size: 14px;
+  line-height: 1.7;
 }
 
+/* FOOTER BOTTOM */
 .footer-bottom {
+  width: 100%;
+
   padding-top: 20px;
+
   border-top: 1px solid #f2e8e1;
+
   color: #777777;
+
   font-size: 13px;
+  line-height: 1.6;
+}
+
+/* =========================================
+   TABLET RESPONSIVENESS
+   ========================================= */
+
+@media (max-width: 768px) {
+  .site-footer {
+    padding: 40px 5% 22px;
+  }
+
+  .footer-logo {
+    font-size: 25px;
+  }
+
+  .site-footer > p {
+    max-width: 450px;
+    font-size: 13px;
+  }
+}
+
+/* =========================================
+   SMALL MOBILE PHONES
+   ========================================= */
+
+@media (max-width: 380px) {
+  .site-footer {
+    padding: 35px 5% 18px;
+  }
+
+  .footer-logo {
+    font-size: 23px;
+  }
+
+  .site-footer > p {
+    font-size: 12px;
+  }
+
+  .footer-bottom {
+    padding-top: 16px;
+    font-size: 11px;
+  }
 }

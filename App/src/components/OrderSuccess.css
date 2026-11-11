@@ -1,0 +1,247 @@
+
+.order-success-page {
+  min-height: 100vh;
+  padding: 70px 20px;
+  background: #fffaf6;
+  overflow-x: hidden;
+}
+
+.order-success-card {
+  width: min(100%, 720px);
+  margin: 0 auto;
+  padding: 45px;
+  border: 1px solid #f0e5dc;
+  border-radius: 28px;
+  background: white;
+  box-shadow: 0 18px 55px rgba(66, 36, 18, 0.07);
+}
+
+.success-icon {
+  display: grid;
+  width: 76px;
+  height: 76px;
+  margin: 0 auto 22px;
+  place-items: center;
+  border-radius: 50%;
+  background: #e9f8ed;
+  color: #239b50;
+  font-size: 2.5rem;
+  font-weight: 800;
+}
+
+.success-kicker {
+  display: block;
+  color: #ff5a0a;
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+  text-align: center;
+}
+
+.order-success-card > h1 {
+  margin-top: 12px;
+  color: #17191f;
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  letter-spacing: -0.06em;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
+.success-message {
+  max-width: 500px;
+  margin: 14px auto 28px;
+  color: #777;
+  line-height: 1.7;
+  text-align: center;
+}
+
+.order-reference {
+  padding: 20px;
+  border: 1px dashed #ffb58e;
+  border-radius: 16px;
+  background: #fff7f1;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
+.order-reference span {
+  display: block;
+  color: #888;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.order-reference strong {
+  display: block;
+  margin-top: 8px;
+  color: #ff5a0a;
+  font-size: 1.35rem;
+  letter-spacing: 0.06em;
+  overflow-wrap: anywhere;
+}
+
+.success-section {
+  margin-top: 30px;
+  padding-bottom: 22px;
+  border-bottom: 1px solid #f0e5dc;
+}
+
+.success-section h2 {
+  margin-bottom: 18px;
+  color: #17191f;
+  font-size: 1.2rem;
+}
+
+.success-order-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 13px 0;
+  color: #333;
+  font-size: 0.9rem;
+}
+
+.success-order-item > div {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.success-order-item span {
+  color: #888;
+  font-size: 0.8rem;
+}
+
+.success-order-item > strong {
+  flex-shrink: 0;
+  overflow-wrap: anywhere;
+}
+
+.success-total {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 15px;
+  padding-top: 18px;
+  border-top: 1px solid #f0e5dc;
+  color: #17191f;
+  font-weight: 750;
+}
+
+.success-total strong {
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.customer-details p {
+  margin: 12px 0;
+  color: #666;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.customer-details strong {
+  color: #17191f;
+}
+
+.success-notice {
+  margin-top: 25px;
+  padding: 15px;
+  border-radius: 12px;
+  background: #fff7f1;
+  color: #96603e;
+  font-size: 0.82rem;
+  line-height: 1.6;
+}
+
+.success-home-button {
+  width: 100%;
+  margin-top: 25px;
+  padding: 16px;
+  border: none;
+  border-radius: 35px;
+  background: #ff5a0a;
+  color: white;
+  font-size: 1rem;
+  font-weight: 750;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.success-home-button:hover {
+  background: #e94c00;
+  transform: translateY(-2px);
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+  .order-success-page {
+    padding: 45px 18px;
+  }
+
+  .order-success-card {
+    padding: 35px 28px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 550px) {
+  .order-success-page {
+    padding: 30px 12px;
+  }
+
+  .order-success-card {
+    padding: 25px 17px;
+    border-radius: 20px;
+  }
+
+  .success-icon {
+    width: 65px;
+    height: 65px;
+    font-size: 2.1rem;
+  }
+
+  .order-success-card > h1 {
+    font-size: 2rem;
+  }
+
+  .success-message {
+    font-size: 0.88rem;
+  }
+
+  .order-reference {
+    padding: 17px 12px;
+  }
+
+  .order-reference strong {
+    font-size: 1.1rem;
+  }
+
+  .success-section {
+    margin-top: 24px;
+  }
+
+  .success-order-item {
+    gap: 10px;
+    font-size: 0.82rem;
+  }
+
+  .success-total {
+    font-size: 0.9rem;
+  }
+
+  .success-total strong {
+    font-size: 1.05rem;
+  }
+
+  .customer-details p {
+    font-size: 0.85rem;
+  }
+
+  .success-home-button {
+    padding: 15px;
+  }
+}

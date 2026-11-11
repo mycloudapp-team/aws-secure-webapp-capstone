@@ -297,3 +297,13 @@
     padding: 22px;
   }
 }
+
+.app {
+  padding-top: 118px;
+}
+
+@media (max-width: 650px) {
+  .app {
+    padding-top: 100px;
+  }
+}
