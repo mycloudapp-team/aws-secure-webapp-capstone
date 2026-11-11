@@ -2,11 +2,11 @@
 import { useMemo, useState } from "react";
 import "./Menu.css";
 
-import jollofRice from "../assets/images/jollof rice.jpg";
-import friedRice from "../assets/images/fried-rice.jpg";
-import friedChicken from "../assets/images/fried-chicken.jpg";
-import heroBurger from "../assets/images/hero-burger.jpg";
-import strawberry from "../assets/images/strawberry.jpg";
+import jollofRice from "../assets/images/jollof-rice-optimized.jpg";
+import friedRice from "../assets/images/fried-rice-optimized.jpg";
+import friedChicken from "../assets/images/fried-chicken-optimized.jpg";
+import heroBurger from "../assets/images/hero-burger-optimized.jpg";
+import strawberry from "../assets/images/strawberry-optimized.jpg";
 
 const foodItems = [
   {
@@ -122,7 +122,12 @@ function Menu({ onAddToCart }) {
         {filteredItems.map((item) => (
           <article className="food-card" key={item.id}>
             <div className="food-image">
-              <img src={item.image} alt={item.name} />
+              <img
+                src={item.image}
+                alt={item.name}
+                loading="lazy"
+                decoding="async"
+              />
 
               {item.popular && (
                 <span className="popular-badge">Popular</span>

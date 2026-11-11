@@ -26,7 +26,46 @@ function Checkout({ cartItems, onPlaceOrder, onBack }) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    onPlaceOrder(formData);
+
+    const fullName = formData.fullName.trim();
+    const phone = formData.phone.trim();
+    const address = formData.address.trim();
+
+    const phonePattern = /^[0-9+()\s-]{7,20}$/;
+
+    if (!fullName) {
+      event.currentTarget.fullName?.setCustomValidity("Please enter your full name.");
+    } else {
+      event.currentTarget.fullName?.setCustomValidity("");
+    }
+
+    if (!phone || !phonePattern.test(phone)) {
+      event.currentTarget.phone?.setCustomValidity(
+        "Please enter a valid phone number."
+      );
+    } else {
+      event.currentTarget.phone?.setCustomValidity("");
+    }
+
+    if (!address) {
+      event.currentTarget.address?.setCustomValidity(
+        "Please enter your delivery address."
+      );
+    } else {
+      event.currentTarget.address?.setCustomValidity("");
+    }
+
+    if (!event.currentTarget.reportValidity()) {
+      return;
+    }
+
+    onPlaceOrder({
+      ...formData,
+      fullName,
+      phone,
+      address,
+      instructions: formData.instructions.trim(),
+    });
   }
 
   return (
@@ -53,7 +92,10 @@ function Checkout({ cartItems, onPlaceOrder, onBack }) {
               type="text"
               placeholder="Enter your full name"
               value={formData.fullName}
-              onChange={handleChange}
+              onChange={(event) => {
+                event.target.setCustomValidity("");
+                handleChange(event);
+              }}
               required
             />
 
@@ -62,9 +104,14 @@ function Checkout({ cartItems, onPlaceOrder, onBack }) {
               id="phone"
               name="phone"
               type="tel"
+              inputMode="tel"
+              pattern="[0-9+()\\s-]{7,20}"
               placeholder="e.g. 0241234567"
               value={formData.phone}
-              onChange={handleChange}
+              onChange={(event) => {
+                event.target.setCustomValidity("");
+                handleChange(event);
+              }}
               required
             />
 
@@ -74,7 +121,10 @@ function Checkout({ cartItems, onPlaceOrder, onBack }) {
               name="address"
               placeholder="Enter your complete delivery address"
               value={formData.address}
-              onChange={handleChange}
+              onChange={(event) => {
+                event.target.setCustomValidity("");
+                handleChange(event);
+              }}
               rows="3"
               required
             />

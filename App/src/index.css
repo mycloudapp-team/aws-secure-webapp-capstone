@@ -59,7 +59,6 @@ body {
       #fff7f1 100%
     );
 
-  background-attachment: fixed;
 }
 
 /* Images */
@@ -105,4 +104,10 @@ body {
   width: 100%;
   max-width: 100%;
   overflow-x: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }

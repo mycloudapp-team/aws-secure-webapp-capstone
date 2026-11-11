@@ -2,7 +2,7 @@
 import "./Hero.css";
 
 // Import the locally stored burger photograph
-import heroBurger from "../assets/images/hero-burger.jpg";
+import heroBurger from "../assets/images/hero-burger-optimized.jpg";
 
 function Hero() {
   return (
@@ -52,6 +52,8 @@ function Hero() {
           src={heroBurger}
           alt="Fresh burger served with golden fries and a cold drink"
           className="hero-food-image"
+          fetchPriority="high"
+          decoding="async"
         />
 
         {/* Made with love badge */}
