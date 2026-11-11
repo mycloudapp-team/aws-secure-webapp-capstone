@@ -63,18 +63,13 @@ function Menu({ onAddToCart }) {
   const [searchTerm, setSearchTerm] = useState("");
 
   const filteredItems = useMemo(() => {
-    const normalizedSearch = searchTerm.trim().toLowerCase();
-
     return foodItems.filter((item) => {
       const matchesCategory =
         activeCategory === "All" || item.category === activeCategory;
 
       const matchesSearch =
-        normalizedSearch === "" ||
-        [item.name, item.description, item.category]
-          .join(" ")
-          .toLowerCase()
-          .includes(normalizedSearch);
+        item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        item.description.toLowerCase().includes(searchTerm.toLowerCase());
 
       return matchesCategory && matchesSearch;
     });
